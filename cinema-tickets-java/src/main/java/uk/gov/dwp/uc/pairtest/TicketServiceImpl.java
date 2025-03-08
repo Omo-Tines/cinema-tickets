@@ -66,8 +66,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public void purchaseTickets(Long accountId, TicketTypeRequest... ticketTypeRequests)
             throws InvalidPurchaseException {
-        if (accountId <= 0) {
-            throw new InvalidPurchaseException("ID must be above zero (0)");
+        if (accountId <= 0 || accountId == null) {
+            throw new InvalidPurchaseException("ID must be above zero (0) and not null");
+        }
+        if (ticketTypeRequests == null) {
+            throw new InvalidPurchaseException("Ticket Type Requests cannot be null");
         }
 
         noOfinfant = 0;
@@ -78,8 +81,7 @@ public class TicketServiceImpl implements TicketService {
         /*
          * i chose this approach because of the readability of
          * for loops and the usability of streams
-         * fun fact i discovered streams recently so i have been trying to learn its
-         * implementation
+         *
          */
 
         /* streams aid in ensuring the array is only accesssed and not edited */
