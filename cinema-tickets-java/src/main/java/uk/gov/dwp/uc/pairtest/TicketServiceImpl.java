@@ -1,14 +1,10 @@
 package uk.gov.dwp.uc.pairtest;
 
-import org.junit.Test;
 import uk.gov.dwp.uc.pairtest.domain.TicketTypeRequest;
 import uk.gov.dwp.uc.pairtest.exception.InvalidPurchaseException;
 import java.util.Arrays;
 import thirdparty.paymentgateway.TicketPaymentService;
 import thirdparty.seatbooking.SeatReservationService;
-
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
 
 public class TicketServiceImpl implements TicketService {
     /**
