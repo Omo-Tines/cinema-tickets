@@ -183,5 +183,18 @@ public class TicketServiceImplTest {
                 () -> ticketService.purchaseTickets(50L, ticketRequest));
         assertEquals("Maximum ticket count exceeded (25)", exception.getMessage());
     }
+    
+    @Test
+    // check if max tickets can be purchased
+    public void testPurchasePassesIfMaxTicketsCanBePurchased() {
+        ticketRequest = new TicketTypeRequest[] {
+                new TicketTypeRequest(TicketTypeRequest.Type.ADULT, 8),
+                new TicketTypeRequest(TicketTypeRequest.Type.INFANT, 8),
+                new TicketTypeRequest(TicketTypeRequest.Type.CHILD, 9)
+        };
+        // check if the purchase passes
+        ticketService.purchaseTickets(50L, ticketRequest);
+    }
+
 
 }
