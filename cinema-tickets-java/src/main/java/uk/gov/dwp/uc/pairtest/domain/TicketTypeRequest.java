@@ -23,7 +23,7 @@ public final class TicketTypeRequest { /* made it final to ensure it cannot be c
     }
 
     public enum Type {
-        ADULT, CHILD , INFANT
+        ADULT, CHILD, INFANT
     }
 
 }
