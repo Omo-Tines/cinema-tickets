@@ -27,13 +27,13 @@ public class TicketServiceImpl implements TicketService {
      * ticket.
      * The total number of tickets in a single purchase cannot exceed 25 tickets.
      */
-    private TicketPaymentService PService;
-    private SeatReservationService SeatRes;
+    private TicketPaymentService pService;
+    private SeatReservationService seatRes;
 
-    public TicketServiceImpl(TicketPaymentService PService, SeatReservationService SeatRes)
+    public TicketServiceImpl(TicketPaymentService pService, SeatReservationService seatRes)
             throws InvalidPurchaseException {
-        this.PService = PService;
-        this.SeatRes = SeatRes;
+        this.pService = pService;
+        this.seatRes = seatRes;
     }
 
     private static final int maxTicket = 25;
@@ -69,8 +69,8 @@ public class TicketServiceImpl implements TicketService {
         totalSeats = result[1]; // total seats of tickets
 
         // Process payment and seat reservation
-        PService.makePayment(accountId, totalPrice); // make payment
-        SeatRes.reserveSeat(accountId, totalSeats); // reserve seats
+        pService.makePayment(accountId, totalPrice); // make payment
+        seatRes.reserveSeat(accountId, totalSeats); // reserve seats
     }
 
     private void validTicket(TicketTypeRequest req) {
